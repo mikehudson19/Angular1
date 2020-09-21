@@ -1,0 +1,122 @@
+<div class="container">
+  <div id="login-row" class="row justify-content-center align-items-center">
+    <div id="login-column" class="col-md-6">
+      <div id="login-box" class="col-md-12">
+        <form
+          id="login-form"
+          class="form"
+          novalidate
+          [formGroup]="registrationForm"
+          (ngSubmit)="onSave()"
+        >
+          <h3 class="text-center my-4">Register</h3>
+          <div class="form-group">
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="First Name"
+              [ngClass]="{ 'is-invalid': message && message.firstName, 'is-valid' : validFields.firstName }"
+              autocomplete="off"
+            />
+            <span class="invalid-feedback">
+              <span>
+                {{ message.firstName }}
+              </span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control"
+              placeholder="Last Name"
+              [ngClass]="{ 'is-invalid': message && message.lastName, 'is-valid' : validFields.lastName }"
+              autocomplete="off"
+            />
+            <span class="invalid-feedback">
+              <span>{{ message.lastName }}</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="Email"
+              [ngClass]="{ 'is-invalid': message && message.email, 'is-valid' : validFields.email  }"
+              autocomplete="off"
+            />
+            <span class="invalid-feedback">
+              <span>{{ message.email }}</span>
+            </span>
+          </div>
+
+          <div formGroupName="passwords">
+            <div class="form-group">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+                autocomplete="off"
+                [ngClass]="{ 'is-invalid' : message && message.password, 'is-valid' : validFields.password || validFields.passwords }" 
+              />
+              <span class="invalid-feedback">
+                {{ message.password }}
+              </span>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="password"
+                name="confirmPass"
+                id="confirmPass"
+                formControlName="confirmPass"
+                class="form-control"
+                placeholder="Confirm Password"
+                autocomplete="off"
+                [ngClass]="{
+                  'is-invalid': message && message.passwords, 'is-valid' : validFields.passwords
+                }"
+              />
+              <span class="invalid-feedback">
+                <span>{{ message.passwords }}</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="remember-me"
+              ><span>I'm not a robot</span> <span
+                ><input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  formControlName="robotCheck"
+                  /></span></label
+            ><br />
+          </div>
+
+          <button [disabled]="!registrationForm.valid" type="submit" name="submit" class="btn btn-outline-dark">
+            Register
+          </button>
+
+          <div id="register-link" class="text-right">
+            <a [routerLink]="['/login']">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

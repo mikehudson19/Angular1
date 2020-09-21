@@ -1,0 +1,60 @@
+<div class="container">
+  <div id="login-row" class="row justify-content-center align-items-center">
+    <div id="login-column" class="col-md-6">
+      <div id="login-box" class="col-md-12">
+        <form id="login-form" class="form" novalidate #loginForm="ngForm" (ngSubmit)="onSave(loginForm)">
+          <h3 class="text-center my-4">Login</h3>
+    
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              required
+              email
+              class="form-control"
+              placeholder="Email"
+              [(ngModel)]=email
+              name="email"
+              #emailVar="ngModel"
+              [ngClass]="{ 'is-invalid' : ((emailVar.touched || emailVar.dirty ) && !emailVar.valid) || invalidEmail } "
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="emailVar.errors?.required">Please enter your email address.</span>
+              <span *ngIf="invalidEmail">There is no user with this email address.</span>
+              <span *ngIf="emailVar.errors?.email">Please enter a valid email address.</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              required
+              class="form-control"
+              placeholder="Password"
+              [(ngModel)]="password"
+              name="password"
+              #passwordVar="ngModel"
+              [ngClass]="{ 'is-invalid' : ((passwordVar.touched || passwordVar.dirty ) && !passwordVar.valid ) || invalidPassword }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="passwordVar.errors?.required">Please enter your password.</span>
+              <span *ngIf="invalidPassword">The password you have entered is incorrect.</span>
+            </span>
+          </div>
+
+            <button
+              type="submit"
+              name="submit"
+              class="btn btn-outline-dark"
+              [disabled]="!loginForm.valid"
+            >Login</button>
+          
+          <div id="register-link" class="text-right">
+            <a [routerLink]="['/registration']">Register here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
