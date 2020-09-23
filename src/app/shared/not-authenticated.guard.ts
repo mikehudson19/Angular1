@@ -5,19 +5,20 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
-export class AuthenticatedGuard implements CanActivate {
+export class NotAuthenticatedGuard implements CanActivate {
 
   constructor(private _router: Router) {}
 
+  // Prevent access to create and edit ads if not logged in
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const authKey = +localStorage.getItem('authKey'); 
-      if (authKey > 0) {
-        this._router.navigate(['']);
+      const authKey: number = +localStorage.getItem('authKey');
+      if (!authKey) {
+        this._router.navigate(['/']);
         return false;
-      } 
+      }
     return true;
   }
+  
 }

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     // If validation is successfull, login and route to their adverts page.
     for (let user of allUsers) {
       if (user.email === this.email && user.password === this.password) {
-        localStorage.setItem('authKey', 'true');
+        localStorage.setItem('authKey', JSON.stringify(user.id));
         this._router.navigateByUrl('/myadverts');
         return;
       }

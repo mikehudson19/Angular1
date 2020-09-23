@@ -5,8 +5,17 @@ export class CustomValidators {
   static noSpaceValidator(
     control: AbstractControl
   ): { [key: string]: boolean } | null {
-    if ((control.value as string).indexOf(' ') !== -1) {
+    if (/[\s]/.test(control.value)) {
       return { 'noSpaceValidator': true };
+    }
+    return null;
+  }
+
+  static spaceStartValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    if (/[\s]/.test(control.value[0])) {
+      return { 'spaceStart': true };
     }
     return null;
   }
@@ -25,7 +34,6 @@ export class CustomValidators {
       }
       return null;
     }
-  
 
   static passwordSpecial(control: AbstractControl): { [key: string]: boolean } | null {
     if (!/\W|_/g.test(control.value) ) {
@@ -67,6 +75,13 @@ export class CustomValidators {
   
     if (password.value !== confirmPass.value) {
       return { 'match' : true }
+    }
+    return null;
+  }
+
+  static onlyNumbers(control: AbstractControl): {[key: string]: boolean } | null {
+    if (!/[0-9]/.test(control.value) || /[A-Za-z]/.test(control.value) ) {
+      return { 'onlyNumbers' : true }
     }
     return null;
   }

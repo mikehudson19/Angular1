@@ -4,7 +4,7 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
       <div class="d-inline-flex" *ngIf="!isLoggedIn">
@@ -15,7 +15,13 @@
           <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
       </div>
-      <div *ngIf="isLoggedIn"> 
+      <div class="d-inline-flex" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/myadverts']">My Ads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/edit', 0, 0]">Create Ad</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>

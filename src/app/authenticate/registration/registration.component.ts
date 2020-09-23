@@ -14,8 +14,7 @@ import { IUser } from '.././IUser';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
+  templateUrl: './registration.component.html'
 })
 
 export class RegistrationComponent implements OnInit {
@@ -151,7 +150,7 @@ export class RegistrationComponent implements OnInit {
           Object.keys(control.errors).map((messageKey) => {
             messages[input] = this.validationMessages[input][messageKey];
           });
-          return messages;
+          // return messages;
         }
       
       // If the passwords do match, activate the valid class.
@@ -163,7 +162,7 @@ export class RegistrationComponent implements OnInit {
       if (control instanceof FormGroup) {
         const nestedGroupMessages = this.invalidInputs(control);
         Object.assign(messages, nestedGroupMessages);
-        return messages;
+        // return messages;
       }  
       
       // If any of the other fields don't meet the requirements, assign error message.
@@ -173,7 +172,7 @@ export class RegistrationComponent implements OnInit {
           Object.keys(control.errors).map((messageKey) => {
             messages[input] = this.validationMessages[input][messageKey];
           });
-          return messages;
+          // return messages;
         } 
       }
       
@@ -182,6 +181,7 @@ export class RegistrationComponent implements OnInit {
         this.validFields[input] = true;
       }
     }
+    return messages;
   }
 
   onSave(): void {

@@ -15,7 +15,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Get current url and update 'isLoggedIn' to display different Navbar items 
+    const authKey: number = +localStorage.getItem('authKey');
+
+    if (authKey > 0) {
+      this.isLoggedIn = true;
+    }
+
+    if (!authKey) {
+      this.isLoggedIn = false;
+    }
+
+    // Set 'isLoggedIn' once user logs in.
     this._router.events.pipe(
       filter(event => event instanceof NavigationEnd))
     .subscribe(event => 

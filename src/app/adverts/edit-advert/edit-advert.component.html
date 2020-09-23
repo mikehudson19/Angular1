@@ -1,0 +1,70 @@
+<div class="container">
+  <div id="login-row" class="row justify-content-center align-items-center">
+    <div id="login-column" class="col-md-6">
+      <div id="login-box" class="col-md-12">
+        <form id="login-form" class="form" novalidate [formGroup]="editAdvertForm" (ngSubmit)="onSave()">
+          <h3 class="text-center my-4">{{ id == 0 ? 'Create Advert' : 'Edit Advert' }}</h3>
+          <div class="form-group">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              class="form-control"
+              formControlName="title"
+              placeholder="Title"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid' : message && message.title }"
+            />
+            <span class="invalid-feedback">
+              <span> {{ message.title }} </span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="price"
+              id="price"
+              formControlName="price"
+              class="form-control"
+              placeholder="Price"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid' : message && message.price }"
+            />
+            <span class="invalid-feedback">
+              <span>{{ message.price }}</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              placeholder="Description"
+              rows="3"
+              formControlName="description"
+              [ngClass]="{ 'is-invalid' : message && message.description }"
+            ></textarea>
+            <span class="invalid-feedback">
+              <span>{{ message.description }}</span>
+            </span>
+          </div>
+
+          <button
+            type="submit"
+            name="submit"
+            class="btn btn-outline-dark btn-lg btn-block"
+          >
+            {{ id === 0 ? 'Post Ad' : 'Save Changes'}}
+          </button>
+          <a
+            class="btn btn-outline-danger btn-lg btn-block"
+            (click)="deleteAdvert()"
+          >
+            Delete Ad
+        </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
