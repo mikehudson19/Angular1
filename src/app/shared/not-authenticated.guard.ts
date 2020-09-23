@@ -15,6 +15,7 @@ export class NotAuthenticatedGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const authKey: number = +localStorage.getItem('authKey');
       if (!authKey) {
+        alert('You must be logged in to view this page.');
         this._router.navigate(['/']);
         return false;
       }
