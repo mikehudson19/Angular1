@@ -1,8 +1,14 @@
 <div class="container">
   <h1 class="my-4">All Adverts</h1>
+  <div class="form-group row">
 
-  <div class="list-group" *ngIf="adverts$ | async as adverts">
-    <a *ngFor="let advert of adverts" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="col-sm-4">
+      <input type="text" class="form-control"  placeholder="Enter your search term..." [(ngModel)]="listFilter"/>
+    </div>
+  </div>
+
+  <div class="list-group" *ngIf="adverts">
+    <a *ngFor="let advert of filteredAdverts" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ advert.title }}</h5>
         <small>List Date: {{ advert.listDate | date: 'd/M/y' }}</small>

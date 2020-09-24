@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 import { UserAdvertsComponent } from './user-adverts/user-adverts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditAdvertComponent } from './edit-advert/edit-advert.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotAuthenticatedGuard } from '../shared/not-authenticated.guard';
 import { CanEditGuard } from '../shared/can-edit.guard';
 import { UnsavedGuard } from '../shared/unsaved.guard';
 import { PageNotFoundComponent } from '../shared/page-not-found.component';
 import { CheckoutAdvertComponent } from './checkout-advert/checkout-advert.component';
+
 
 const routes = [
   { path: 'all', component: AllAdvertsComponent },
@@ -27,6 +28,7 @@ const routes = [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ]
 })
