@@ -1,10 +1,19 @@
-<div class="container d-flex justify-content-center align-items-center" style="height: 80vh">
-  <div class="card" style="width: 40rem; height: 15rem" *ngIf="advert$ | async as advert">
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="height: 80vh"
+>
+  <div
+    class="card"
+    style="width: 40rem; height: 12rem"
+    *ngIf="advert$ | async as advert"
+  >
     <div class="card-body">
       <h5 class="card-title">{{ advert.title }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ advert.price }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ advert.price | currency: "ZAR":"symbol-narrow" }}
+      </h6>
       <p class="card-text">{{ advert.description }}</p>
-      <a class="card-link btn btn-outline-dark">Back</a>
+      <a class="card-link btn btn-outline-dark" (click)="onBack()">Back</a>
       <a class="card-link btn btn-outline-dark">Go to Payment</a>
     </div>
   </div>
