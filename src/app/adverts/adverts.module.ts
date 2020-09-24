@@ -16,10 +16,9 @@ const routes = [
   { path: 'all', component: AllAdvertsComponent },
   { path: 'myadverts', component: UserAdvertsComponent, canActivate: [NotAuthenticatedGuard] },
   { path: 'edit/:id/:owner', component: EditAdvertComponent, canActivate: [CanEditGuard, NotAuthenticatedGuard], canDeactivate: [UnsavedGuard] },
-  { path: 'checkout', component: CheckoutAdvertComponent, canActivate: [NotAuthenticatedGuard] },
+  { path: 'checkout/:id', component: CheckoutAdvertComponent, canActivate: [NotAuthenticatedGuard] },
   { path: '', redirectTo: 'all', pathMatch: 'full' } ,
   { path: '**', component: PageNotFoundComponent }
-
 ]
 
 @NgModule({

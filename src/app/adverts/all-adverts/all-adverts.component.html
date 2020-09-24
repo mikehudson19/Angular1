@@ -9,7 +9,7 @@
       </div>
       <p class="mb-1 my-2">{{ advert.description }}</p>
       <span class="price">{{ advert.price | currency: 'ZAR' : 'symbol-narrow' }}</span>
-      <button class="btn btn-outline-dark btn-sm mx-3 my-2" [routerLink]="['/checkout']">Buy {{ advert.title }}</button>
+      <button class="btn btn-outline-dark btn-sm mx-3 my-2" [routerLink]="['/checkout', advert.id]">Buy {{ advert.title }}</button>
 
     </a>
     

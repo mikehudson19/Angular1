@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="card" style="width: 22rem;">
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh">
+  <div class="card" style="width: 40rem; height: 15rem" *ngIf="advert$ | async as advert">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <h5 class="card-title">{{ advert.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ advert.price }}</h6>
+      <p class="card-text">{{ advert.description }}</p>
+      <a class="card-link btn btn-outline-dark">Back</a>
+      <a class="card-link btn btn-outline-dark">Go to Payment</a>
     </div>
   </div>
 </div>
