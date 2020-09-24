@@ -80,7 +80,7 @@ export class CustomValidators {
   }
 
   static onlyNumbers(control: AbstractControl): {[key: string]: boolean } | null {
-    if (!/[0-9]/.test(control.value) || /[A-Za-z]/.test(control.value) ) {
+    if (!/[0-9]/.test(control.value) || /[A-Za-z]/.test(control.value) || /\W|_/g.test(control.value)) {
       return { 'onlyNumbers' : true }
     }
     return null;
